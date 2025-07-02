@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+<div id="calendar"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<script>
+  var picker = new Pikaday({
+    field: null, // no input field
+    container: document.getElementById('calendar'),
+    bound: false,
+    onSelect: function(date) {
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(date.toISOString().split('T')[0]);
+      }
+    }
+  });
+</script>
